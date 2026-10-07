@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Смены - Набиев Мехрубон</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="header-top">
+                <h1>Учёт смен</h1>
+                <div class="header-badge">Активно</div>
+            </div>
+            <p class="subtitle">Набиев Мехрубон · Кухня · 239 ₽/ч</p>
+        </header>
+
+        <!-- ИТОГИ -->
+        <div class="totals">
+            <div class="totals-row primary">
+                <div>
+                    <div class="totals-label">Этот месяц</div>
+                    <div class="totals-sub" id="month-hours">0 ч · 0 смен</div>
+                </div>
+                <div class="totals-value" id="month-pay">0 ₽</div>
+            </div>
+            <div class="totals-row">
+                <div>
+                    <div class="totals-label">Всего</div>
+                    <div class="totals-sub" id="total-hours">0 ч · 0 смен</div>
+                </div>
+                <div class="totals-value" id="total-pay">0 ₽</div>
+            </div>
+        </div>
+
+        <!-- КНОПКА -->
+        <button class="btn-add" onclick="openModal()">
+            <span>Добавить смену</span>
+        </button>
+
+        <!-- СПИСОК -->
+        <h2 class="section-title">История смен</h2>
+        <div id="shifts-list" class="shifts-list">
+            <div class="empty">Загрузка...</div>
+        </div>
+
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+        <div class="modal">
+            <h2>Новая смена</h2>
+
+            <label>
+                Дата
+                <input type="date" id="input-date">
+            </label>
+
+            <div class="row">
+                <label>
+                    Приход
+                    <input type="time" id="input-start" value="18:00">
+                </label>
+                <label>
+                    Уход
+                    <input type="time" id="input-end" value="03:00">
+                </label>
+            </div>
+
+            <label class="checkbox-label" id="holiday-label">
+                <input type="checkbox" id="input-holiday" onchange="toggleHoliday()">
+                <span>Праздничный день ×2</span>
+            </label>
+
+            <label>
+                Комментарий
+                <input type="text" id="input-comment" placeholder="Необязательно">
+            </label>
+
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeModal()">Отмена</button>
+                <button class="btn-save" onclick="saveShift()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
