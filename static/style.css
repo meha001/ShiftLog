@@ -18,7 +18,7 @@
 
     --text: #ededed;
     --text-muted: #8a8a8a;
-    --text-dim: #5a5a5a;
+    --text-dim: #white;
 
     /* Один акцент — сдержанный зелёный */
     --accent: #00b87a;
